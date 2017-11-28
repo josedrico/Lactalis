@@ -1,0 +1,45 @@
+CREATE TABLE Clientes (
+id_cliente INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+usuario VARCHAR(255),
+pwd VARCHAR(255),
+nombre VARCHAR(255),
+telefono VARCHAR(255)
+);
+
+INSERT INTO Clientes (usuario, pwd, nombre, telefono) VALUES ('user','user','David Rico', '66212124122');
+
+CREATE TABLE Pedidos (
+id_pedido INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+fecha TIMESTAMP,
+tienda VARCHAR(255),
+timer VARCHAR(255),
+id_cliente INT(6) UNSIGNED,
+FOREIGN KEY (id_cliente) REFERENCES Clientes (id_cliente)
+ON UPDATE CASCADE 
+ON DELETE CASCADE
+);
+
+
+CREATE TABLE Productos (
+id_producto INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+marca VARCHAR(255),
+nombre VARCHAR(255)
+);
+
+ALTER TABLE Productos ADD categoria VARCHAR(255),
+
+INSERT INTO Productos (marca, nombre) VALUES ("Lala", "Oaxaca Desl");
+
+CREATE TABLE Desg (
+id_desg INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+cantidad INT,
+unidad VARCHAR(7),
+departamento VARCHAR(255),
+producto VARCHAR(255),
+id_pedido INT(6) UNSIGNED,
+FOREIGN KEY (id_pedido) REFERENCES Pedidos (id_pedido)
+ON UPDATE CASCADE 
+ON DELETE CASCADE
+);
+
+Con eShip envía todos los pedidos de tu tienda en minutos usando las mejores lineas transportistas con las mejores tarifas!
